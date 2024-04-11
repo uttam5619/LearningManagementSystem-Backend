@@ -65,15 +65,14 @@ userSchema.methods ={
     comparePassword: async function(plainTextPassword){
         return await bcrypt.compare(plainTextPassword, this.password)
     },
-    generatePasswordResetToken: async function(){
+    generatepasswordResetToken: async function(){
         const resetToken =crypto.randomBytes(20).toString('hex')// generating Token
 
-        this.forgetPasswordToken =crypto.Hash('sha256').update(resetToken).digest('hex'),
+        this.forgetPasswordToken =crypto.createHash('sha256').update(resetToken).digest('hex'),
         /*this is the token which is going under considreation
         in the database, therefore we encrypted the resetToken */
 
         this.forgetPasswordExpiry= Date.now() + 15*60*1000  //15 minutes from now
-
         return resetToken // this token will be send to the user's email.
     }
 }

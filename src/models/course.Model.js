@@ -7,7 +7,7 @@ const CourseSchema = new Schema({
         minLength: [3, 'title should contain atleast 3 characters'],
         maxLength: [50, 'title should contain atmax 50 characters'],
         trim: true,
-
+        lowercase: true,
     },
     description:{
         type: String,
@@ -15,6 +15,7 @@ const CourseSchema = new Schema({
         minLength: [10, 'description should contain atleast 10 characters'],
         maxLength: [200, 'title should contain atmax 200 characters'],
         trim: true,
+        lowercase: true,
     },
     category: {
         type: String,
@@ -37,11 +38,11 @@ const CourseSchema = new Schema({
             decription: String,
             lecture: {
                 public_id: {
-                    type:String,
+                    type:String, //cloudinary url
                     required: true
                 },
                 secure_url:{
-                    type: String,
+                    type: String, //cloudinary url
                     required: true
                 }
                 

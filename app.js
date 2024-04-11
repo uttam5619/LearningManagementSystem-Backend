@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors({
     origin: [process.env.FRONTEND_URL],
-    ceedentials:true
+    credentials:true
 
 }))
 app.use(express.json())
@@ -18,7 +18,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 
 app.use('/api/v1/user',userRoutes)
-app.use('/api/v1/course', courseRoute)
+app.use('/api/v1/course',courseRoute)
 
 
 app.use(errorMiddleware)

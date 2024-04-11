@@ -121,10 +121,10 @@ const forgotPassword = async (req, res, next)=>{
     if(!email) next(new AppError('Email is required', 400))
 
     const user= await User.findOne({email})
-    if(!user) return next(new AppError(`User not registered`),400)
-    const resetToken = await user.genenratePasswordResetToken()
+    if(!user) return next(new AppError(`user not registered`),400)
+    const resetToken = await user.generatePasswordResetToken()
     await user.save()
-    /*
+    
     const resetPasswordURL=`${process.env.FRONTEND_URL}/reset-password/${resetToken}`
 
     try{
@@ -136,7 +136,7 @@ const forgotPassword = async (req, res, next)=>{
         await user.save()
         return next(new AppError(err.message,500))
     }
-    */
+    
 }
 
 const resetPassword = (req, res, next)=>{
