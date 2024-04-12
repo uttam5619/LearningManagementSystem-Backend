@@ -1,1 +1,2 @@
 export const profileImage ='https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg'
+export const courseImage ='https://img.freepik.com/premium-vector/courses-logo-icon-brand-identity-sign-symbol-template_880781-2160.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1712793600&semt=ais'

@@ -39,11 +39,11 @@ const CourseSchema = new Schema({
             lecture: {
                 public_id: {
                     type:String, //cloudinary url
-                    required: true
+                    //required: true
                 },
                 secure_url:{
                     type: String, //cloudinary url
-                    required: true
+                    //required: true
                 }
                 
             }

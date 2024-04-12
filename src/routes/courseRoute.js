@@ -1,12 +1,13 @@
 import {Router } from 'express'
+import upload from '../middleware/multer.middleware.js'
 import { getCourseWithId, getAllCourses, createCourse, updateCourse, deleteCourse } from '../controller/course.Controller.js'
 const courseRoute=Router()
 
-courseRoute.post('/create', createCourse)
-courseRoute.put('/update/:id', updateCourse)
+courseRoute.post('/', createCourse)
+courseRoute.put('/:id', updateCourse)
 courseRoute.get('/', getAllCourses)
 courseRoute.get('/:id', getCourseWithId)
-courseRoute.delete('/delete/:id',deleteCourse)
+courseRoute.delete('/:id',deleteCourse)
 
 
 export default courseRoute

@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import userRoutes from './src/routes/userRoute.js';
 import errorMiddleware from './src/middleware/error.middleware.js';
 import courseRoute from './src/routes/courseRoute.js';
+import bodyParser from 'body-parser';
 const app = express();
 
 
@@ -13,7 +14,11 @@ app.use(cors({
     credentials:true
 
 }))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(morgan('dev'))
 
