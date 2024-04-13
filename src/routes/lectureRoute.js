@@ -1,0 +1,1 @@
+import courseRoute from "./courseRoute";

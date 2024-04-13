@@ -37,3 +37,15 @@ const {title, description, category, createdBy}= req.body
     }catch(err){
         console.log(err.message, err)
     }
+
+
+
+
+
+
+    {
+        "title":"git",
+        "description":"this tutorial covers the working of version control system git",
+        "createdBy": "uttam123",
+        "category":"webdevelopment"
+    }

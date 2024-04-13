@@ -1,6 +1,6 @@
 import Course from '../models/course.Model.js'
 import AppError from "../utils/Error.js"
-import { courseImage, profileImage } from "../utils/constant.js"
+import { courseImage } from "../utils/constant.js"
 import fs from 'fs/promises'
 import cloudinary from 'cloudinary'
 
@@ -21,7 +21,7 @@ const createCourse =async (req, res) =>{
                     category,
                     thumbnail:{
                         public_id: Math.floor(Math.random()*1000),
-                        secure_url: profileImage
+                        secure_url: courseImage
                     }
                 }
             )
@@ -49,8 +49,25 @@ const createCourse =async (req, res) =>{
 }
 
 
-const updateCourse = async (req, res, next) =>{
-
+const updateCourse = async(req, res, next) =>{
+    const { id }= req.params
+    if(!id) return res.status(400).json({success: false, message:'provide a unique id'})
+    try{
+        const course = await Course.findByIdAndUpdate(
+            id,
+            {
+                $set:req.body
+            },
+            {
+                runValidators: true
+            }
+        )
+        if(!course) return res.status(404).json({success:false,message:'course not found'})
+        console.log('successfully updated course')
+        return res.status(200).json({success: true, message:'updated successfully', data:course})
+    }catch(err){
+        console.log(err.message)
+    }
 }
 
 const getCourseWithId =async (req, res, next)=>{
@@ -67,7 +84,16 @@ const getCourseWithId =async (req, res, next)=>{
 }
 
 const deleteCourse = async (req, res, next) =>{
-
+    const {id} = req.params
+    if(!id) return res.status(400).json({success: false, message:'provide valid id regarding the course'})
+    try{
+        const course = await Course.findById(id)
+        if(!course) return res.status(400).json({success: false, message:'Course not found'})
+        await Course.findByIdAndDelete(id)
+    return res.status(200).json({success:true, message:`course deleted successfully`})
+    }catch(err){
+        console.log(err.message, err)
+    }
 }
 
 const getAllCourses = async (req, res, next)=>{
