@@ -3,11 +3,11 @@ import upload from '../middleware/multer.middleware.js'
 import { getCourseWithId, getAllCourses, createCourse, updateCourse, deleteCourse } from '../controller/course.Controller.js'
 const courseRoute=Router()
 
-courseRoute.post('/', createCourse)
+courseRoute.post('/', createCourse).get('/', getAllCourses)
+
 courseRoute.put('/:id', updateCourse)
-courseRoute.get('/', getAllCourses)
-courseRoute.get('/:id', getCourseWithId)
-courseRoute.delete('/:id',deleteCourse)
+.get('/:id', getCourseWithId)
+.delete('/:id',deleteCourse)
 
 
 export default courseRoute

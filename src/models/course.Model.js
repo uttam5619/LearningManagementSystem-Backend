@@ -1,7 +1,7 @@
 import {Schema, model} from 'mongoose'
 
-const CourseSchema = new Schema({
-    title: {
+const courseSchema = new Schema({
+    title:{
         type: String,
         required: [true, 'title is required'],
         minLength: [3, 'title should contain atleast 3 characters'],
@@ -57,9 +57,7 @@ const CourseSchema = new Schema({
         type: String,
         required: [true,'name of creator is required']
     }
-},{timestamps: true})
+},{timestamps:true})
 
-
-const Course = model('Course',CourseSchema)
-
+const Course = model('Course', courseSchema)
 export default Course
